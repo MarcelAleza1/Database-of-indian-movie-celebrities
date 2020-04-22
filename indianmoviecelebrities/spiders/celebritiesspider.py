@@ -12,10 +12,10 @@ class QuoteSpider(scrapy.Spider):
                     all_actors = response.css('div.mode-detail')
 
                     for actor in all_actors:
-                              celebrity_name = all_actors.css('.lister-item-header a::text').extract()
+                              celebrity_name = all_actors.css('.lister-item-header a').css('::text').extract()
                               celebrity_image_link = all_actors.css('img::attr(src)').extract()
-                              celebrity_role = all_actors.css('div.text-muted a').extract()
-                              celebrity_detail = all_actors.css('div.text-small+ p').extract()
+                              celebrity_role = all_actors.css('div.text-muted a').css('::text').extract()
+                              celebrity_detail = all_actors.css('div.text-small+ p').css('::text').extract()
 
                               items['celebrity_name']=celebrity_name
                               items['celebrity_image_link']=celebrity_image_link
